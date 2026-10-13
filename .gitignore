@@ -1,0 +1,18 @@
+# Local harness state, logs, source references and snapshots
+.harness/
+docs/local-environment.md
+
+# Local credentials
+.env
+.env.*
+!.env.example
+.aws/
+*.pem
+*.key
+
+# Temporary outputs
+.DS_Store
+__pycache__/
+*.pyc
+*.tmp
+*.swp
