@@ -1,5 +1,11 @@
 # v1 기술 결정 — SRC-005 위임에 따른 선택
 
+> **SRC-007 설정 정정 적용:** 승인 목표는 [project-settings.json](project-settings.json)과 [target-architecture.md](target-architecture.md), 현재 구현 관측은 [current-implementation.json](current-implementation.json)으로 분리했다. 아래 SRC-006 문단에서 언급한 대체 구현 CONFIRMED는 **정정 전 설정 이력**이며 `.harness/v1/settings-correction/history/docs/project-settings.json`에 보존한다. 현재 승인 목표는 Compose Multiplatform Android/iOS·Ktor·전용 모듈 경계다. 웹 UI만 UNDECIDED이며 현재 baseline/제품 전환 실행 권한은 BLOCKED다. [실행·검토 연결](settings-alignment.md)을 따른다.
+
+> **SRC-006 정정:** 아래 표는 에이전트의 당시 구현 선택과 이유를 보존한 이력이며 사용자 변경 승인표가 아니다. 사용자 원문과 이번 재확인에 따른 목표는 **Ktor + Compose Multiplatform Android/iOS + 공통/전용 계층 구조**다. UI 비공유·Ktor 미사용·전용 계층 생략은 명시적 대체 승인 없이 구현된 불일치다. SQLite/버전/세부 라이브러리는 위임 내 선택과 구분한다. `docs/project-settings.json`의 CONFIRMED도 실제 설정/당시 에이전트 판단을 뜻하며 이탈에 대한 사용자 승인으로 사용하지 않는다. 현재 판정·원문·수정 계획은 [합의 검토](agreement-review.md)를 따른다.
+>
+> 실제 구현 설명 정정: iOS 저장 시도는 아래 이력의 UserDefaults가 아니라 `MemoApp.swift`의 `Application Support/memo-v1/pending.json` atomic 쓰기·fsync다. 기존 표를 소급 삭제하지 않는다. 이 문서의 과거 검토 PASS는 정정된 목표 구조 준수 PASS가 아니다.
+
 모든 선택은 기존 D-001~004·U-001·세 플랫폼·KMP 방향을 유지하는 가역적 구현 판단이다. 현재 Codex가 서버·공유·웹·Android·iOS를 순차 담당하며 독립 에이전트 실행으로 표현하지 않는다.
 
 | 영역 | 선택·이유 | 소유 경계·검증 |

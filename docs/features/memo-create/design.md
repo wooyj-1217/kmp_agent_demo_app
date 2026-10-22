@@ -1,5 +1,7 @@
 # FEAT-002 메모 작성·영속 저장 디자인 명세
 
+> SRC-007 기술 목표 정정: Android/iOS UI 방식은 Compose Multiplatform으로 확정됐다. 아래 과거 UI 기술 UNKNOWN·플랫폼별 기본 UI 적용 판단은 그 당시 이력이며 현재 목표를 대체하지 않는다. 웹 UI 적용 범위만 미정이다. 행동·문구·상태 정책은 보존하되 목표 UI 전환 후 실제 상태 비교/접근성을 재검증해야 한다.
+
 현재 기준: MEMO-MVP-R0.2-WEB / 명세 D0.4-WEB IN_PROGRESS / 시안 D0.4 IN_PROGRESS / 시각 검토 NOT_RUN. 아래 D0.1·D0.4의 완료·입력 설명은 과거 범위에 한정하며 웹 추가의 인계 완료가 아니다.
 
 - 제품: [MEMO-MVP](../../product.md), [요구사항](requirements.md), TASK-004 / 현재 Codex design

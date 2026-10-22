@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "project_id": "ebe7ae3b-67b3-415a-8fac-d338adcee85e",
+  "mode": "installed",
+  "source": "git@github.com-study:wooyj-1217/kmp_agent.git",
+  "requested_ref": "v0.2.0",
+  "commit": "0e2a2468304a610ca6aa4e0b8fa6ff4bf4ebee55",
+  "version": "0.2.0",
+  "code_path": ".kmp-agent/releases/0e2a2468304a610ca6aa4e0b8fa6ff4bf4ebee55",
+  "previous": {
+    "mode": "installed",
+    "source": "git@github.com-study:wooyj-1217/kmp_agent.git",
+    "requested_ref": "v0.1.0",
+    "commit": "b802d18b068d4a213946a0c7f3b5dee77b6c6621",
+    "version": "0.1.0",
+    "code_path": ".kmp-agent/releases/b802d18b068d4a213946a0c7f3b5dee77b6c6621"
+  }
+}

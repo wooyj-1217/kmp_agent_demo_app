@@ -1,5 +1,7 @@
 # v1 로컬 실행·검증 안내
 
+> SRC-007: 현재 승인 목표는 project-settings.json/target-architecture.md, 실행 전 검사는 tools/project_workflow.py 및 settings-alignment.md를 따른다. 아래 명령·PASS·구현 설명은 기존 대체 구현의 관측/이력이며 목표 기술 준수 또는 전환 착수 허가가 아니다. 현재 목표 baseline은 BLOCKED다.
+
 아래 명령은 구현 목표이며 실제 실행 결과는 `.harness/v1/`와 작업 원장에 기록한다. JDK17, Gradle wrapper, Android SDK(앱 빌드), 전체 Xcode(iOS)가 필요하다. 설치된 CommandLineTools만으로 iOS를 검증했다고 표현하지 않는다.
 
 - 루트: `rtk proxy ./gradlew :shared:jvmTest :server:test :web:jsBrowserDistribution`.

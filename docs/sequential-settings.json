@@ -1,0 +1,99 @@
+{
+  "schema_version": 1,
+  "modules": {
+    "memo-list-docs": [
+      "docs/features/memo-list"
+    ],
+    "memo-create-docs": [
+      "docs/features/memo-create"
+    ],
+    "design-prototype": [
+      "docs/design"
+    ],
+    "shared": [
+      "shared"
+    ],
+    "server": [
+      "server"
+    ],
+    "web": [
+      "web"
+    ],
+    "android": [
+      "androidApp"
+    ],
+    "ios": [
+      "iosApp"
+    ]
+  },
+  "commands": {
+    "prototype-syntax": {
+      "kind": "other",
+      "argv": [
+        "rtk",
+        "proxy",
+        "node",
+        "--check",
+        "docs/design/prototype.js"
+      ],
+      "cwd": "."
+    },
+    "shared-test": {
+      "kind": "test",
+      "argv": [
+        "rtk",
+        "proxy",
+        "./gradlew",
+        ":shared:jvmTest",
+        "--console=plain"
+      ],
+      "cwd": "."
+    },
+    "server-test": {
+      "kind": "test",
+      "argv": [
+        "rtk",
+        "proxy",
+        "./gradlew",
+        ":server:test",
+        "--console=plain"
+      ],
+      "cwd": "."
+    },
+    "web-build": {
+      "kind": "build",
+      "argv": [
+        "rtk",
+        "proxy",
+        "./gradlew",
+        ":web:jsBrowserDistribution",
+        ":server:installDist",
+        "--console=plain"
+      ],
+      "cwd": "."
+    },
+    "android-build": {
+      "kind": "build",
+      "argv": [
+        "rtk",
+        "proxy",
+        "./gradlew",
+        "-p",
+        "androidApp",
+        "assembleDebug",
+        "--console=plain"
+      ],
+      "cwd": "."
+    },
+    "ios-build-preflight": {
+      "kind": "build",
+      "argv": [
+        "rtk",
+        "proxy",
+        "python3",
+        "iosApp/tools/verify.py"
+      ],
+      "cwd": "."
+    }
+  }
+}

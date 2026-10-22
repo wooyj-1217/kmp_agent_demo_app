@@ -1,0 +1,39 @@
+{
+  "kind": "OBSERVED_IMPLEMENTATION_ONLY",
+  "approval": "NOT_AN_APPROVED_TARGET",
+  "observed_at": "2026-10-21T05:57:42.438713+00:00",
+  "code_basis": "WORKING_TREE / product HEAD43c0b3eb9647161fc21f0c693e8f17ca51446d26; not committed implementation",
+  "ui": {
+    "android": "Android Views",
+    "ios": "SwiftUI",
+    "web": "Kotlin/JS DOM"
+  },
+  "server": "JDK HttpServer",
+  "modules": "shared/server/web; separate Android build with shared-jvm.jar; SwiftUI iOS app",
+  "database": "SQLite JDBC3.50.3.0",
+  "source_files": {
+    "android": {
+      "path": "androidApp/src/main/kotlin/memo/android/MainActivity.kt",
+      "sha256": "660f1d9bea5a2fa0279fd1091bce4822c9d777af4dfa6ac17a3748005431e4d8"
+    },
+    "ios": {
+      "path": "iosApp/MemoApp.swift",
+      "sha256": "a93c1ab2367b7a61bc90e46cd935fc892b9fa5afe6b5e44d1e8dfd19183b8816"
+    },
+    "web": {
+      "path": "web/src/jsMain/kotlin/memo/web/Main.kt",
+      "sha256": "c8d6a9ba901cf35c3a49db96191598379a04b62a1d33938bea7565192115e7ac"
+    },
+    "server": {
+      "path": "server/src/main/kotlin/memo/server/Main.kt",
+      "sha256": "cf8a71678be22e038a4a514acda550ade4af0271452ad0c05e0751e7756e0146"
+    },
+    "build": {
+      "path": "settings.gradle.kts",
+      "sha256": "5912aab7844b5a77b09c792ff03689f7b84e3d0ba29bb0231b529f9f28ab9961"
+    }
+  },
+  "approved_targets": "docs/project-settings.json",
+  "historical_settings": ".harness/v1/settings-correction/history/docs/project-settings.json",
+  "compliance": "UI/server/module targets differ; transition NOT_RUN"
+}

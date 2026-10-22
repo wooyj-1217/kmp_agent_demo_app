@@ -16,3 +16,25 @@ __pycache__/
 *.pyc
 *.tmp
 *.swp
+
+# Local Codex hook wiring and settings
+/.codex/*
+!/.codex/hooks.json
+/.kmp-agent/releases/
+
+# Product build/runtime outputs
+.gradle/
+.kotlin/
+**/build/
+kotlin-js-store/
+node_modules/
+data/
+local.properties
+*.xcuserstate
+**/xcuserdata/
+
+# Local tooling state and generated review/log packages
+/.serena/
+/reports/
+/server/bin/
+/shared/bin/

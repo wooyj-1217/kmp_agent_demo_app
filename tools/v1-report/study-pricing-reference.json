@@ -1,0 +1,28 @@
+{
+  "verified_at": "2026-10-21T08:25:53.034091+00:00",
+  "rate_reference_date": "2026-10-21",
+  "source_urls": {
+    "api": "https://developers.openai.com/api/docs/pricing",
+    "codex": "https://developers.openai.com/codex/pricing"
+  },
+  "page_sha256": {
+    "api": "158f56f71504545e7ed58f3e2a9a328e85f5c2972823658c32dfaf18cd0097a1",
+    "codex": "1c63db83d96cbcd5df71cc2ec20ea350ebaf88245e997d2cd8f2fe388d843d5d"
+  },
+  "model": "gpt-6.1-sol",
+  "unit": "USD per 1M tokens",
+  "standard_short_base": {
+    "normal_input": 2,
+    "cached_input": 0.1,
+    "output": 10
+  },
+  "fast_short_base": {
+    "normal_input": 4,
+    "cached_input": 0.2,
+    "output": 20
+  },
+  "verification": "Official pages fetched and displayed model rows read; API and Codex billing distinction checked. Future regeneration reuses this dated reference, not a new live rate check.",
+  "actual_billing_route": "UNKNOWN",
+  "actual_service_tier": "UNKNOWN",
+  "historical_rates": "UNKNOWN"
+}
