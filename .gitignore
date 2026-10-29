@@ -1,0 +1,11 @@
+
+/.harness/
+/.kmp-agent/releases/
+
+.gradle/
+.kotlin/
+**/build/
+local.properties
+.DS_Store
+iosApp/Pods/
+**/xcuserdata/

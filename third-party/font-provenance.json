@@ -1,0 +1,20 @@
+{
+  "tool": "fonttools 4.68.0",
+  "inputs": [
+    {
+      "name": "Noto Sans KR",
+      "source": "https://github.com/google/fonts/tree/main/ofl/notosanskr",
+      "sha256": "194018e6b2b293a7964f037b25c0249ce1418bc9ab3c971060a03aa57861e252"
+    },
+    {
+      "name": "Noto Emoji",
+      "source": "https://github.com/google/fonts/tree/main/ofl/notoemoji",
+      "sha256": "de6c18832938afc99caf132b39d6a30a19bac7f2e812e28db2535b4608d27551"
+    }
+  ],
+  "output": {
+    "name": "Moa Sans Regular",
+    "path": "composeApp/src/commonMain/composeResources/font/noto_sans_kr.ttf",
+    "sha256": "b789d61daf59dca4c6c3e9c2188ff0609a23a50a6379950b375a5026eb530ab7"
+  }
+}
