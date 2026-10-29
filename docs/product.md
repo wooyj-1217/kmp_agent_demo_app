@@ -1,5 +1,7 @@
 # 서버 연동 메모 앱 제품 지침
 
+> **master 비교 기준 / 2026-10-29:** 버전별 재구현 비교를 위해 현재 master의 제품 구현은 제거했다. 아래 목표·요구·과거 이력은 보존하며, 이전 구현은 `demo/agent-0.2.0`에 있다. [비교 기준 안내](master-baseline.md)를 따른다.
+
 > **SRC-007 현재 설정·실행 기준:** [project-settings.json](project-settings.json)은 승인 목표만 담고, [current-implementation.json](current-implementation.json)은 대체 구현의 관측 사실만 담는다. 목표 모듈은 [target-architecture.md](target-architecture.md), 실행/동결 설정/과거 PASS 비승계는 [settings-alignment.md](settings-alignment.md)를 따른다. 현재 목표 baseline은 BLOCKED이며 이번 설정 정정은 제품 전환 착수 허가가 아니다. 모바일 Compose Multiplatform·서버 Ktor·모듈 경계는 확정, 웹 UI 범위만 미정이다.
 
 > **SRC-006 정정 / 2026-10-21:** 사용자 재확인과 과거 원문 대조 결과, 목표는 **Ktor 백엔드 + KMP·Compose Multiplatform Android/iOS 앱** 및 합의한 공통/서버·클라이언트 전용 계층 구조다. 현재 HttpServer·Android View·SwiftUI·축약 모듈 구현은 이에 불일치한다. 아래 SRC-004의 “세부 기술 미정”은 당시 정리 이력이며 앞선 명시 합의를 철회한 사용자 승인으로 취급하지 않는다. 웹 UI 통일 적용 범위만 UNKNOWN이다. [합의 대조·위임 경계·수정 계획](agreement-review.md)을 현재 정정 기준으로 함께 읽는다. 제품 구현/DB 변경은 이번 범위가 아니다.

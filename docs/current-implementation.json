@@ -35,5 +35,14 @@
   },
   "approved_targets": "docs/project-settings.json",
   "historical_settings": ".harness/v1/settings-correction/history/docs/project-settings.json",
-  "compliance": "UI/server/module targets differ; transition NOT_RUN"
+  "compliance": "UI/server/module targets differ; transition NOT_RUN",
+  "availability": {
+    "state": "REMOVED_FROM_MASTER",
+    "removed_at": "2026-10-29",
+    "reason": "implementation-free master baseline for kmp_agent version comparisons",
+    "preserved_branch": "demo/agent-0.2.0",
+    "preserved_commit": "f9f36fd9c73d118b918b547460a7c9e16ff480de",
+    "observations_are_historical": true,
+    "details": "docs/master-baseline.md"
+  }
 }
