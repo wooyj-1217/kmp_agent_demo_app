@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#f6f5f1"><meta name="description" content="생각이 머무는 작은 틈. 어디서나 이어 쓰는 나만의 메모.">
+  <title>틈 — 생각이 머무는 곳</title>
+  <link rel="icon" href="icon.svg"><link rel="manifest" href="manifest.webmanifest"><link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <div id="app" class="workspace">
+    <aside class="rail" aria-label="주 메뉴">
+      <a class="brand" href="#" aria-label="틈 홈"><span class="brand-mark">틈</span><span>teum<span class="brand-caption">생각이 머무는 곳</span></span></a>
+      <button id="new-note" class="primary new-note"><span>＋</span> 새 메모 <kbd>⌘ N</kbd></button>
+      <nav>
+        <button class="nav-item active" data-view="all"><span class="nav-icon">▤</span> 모든 메모 <span id="count-all" class="count">0</span></button>
+        <button class="nav-item" data-view="pinned"><span class="nav-icon">☆</span> 고정한 메모 <span id="count-pinned" class="count">0</span></button>
+        <button class="nav-item" data-view="trash"><span class="nav-icon">♧</span> 휴지통 <span id="count-trash" class="count">0</span></button>
+      </nav>
+      <div class="rail-bottom"><div class="quiet-card"><span class="tiny-label">A LITTLE SPACE FOR YOU</span><p>작은 생각도<br>좋은 시작이 되니까.</p><span class="line-drawing" aria-hidden="true">〰</span></div>
+      <button id="account" class="account"><span class="avatar">나</span><span><strong id="account-name">나만의 공간</strong><small id="account-detail">로그인하고 모든 기기에서 이어 쓰세요</small></span><span>↗</span></button></div>
+    </aside>
+    <main class="main">
+      <header class="topbar"><span class="breadcrumb">나의 공간 <span>/</span> <strong id="view-breadcrumb">모든 메모</strong></span><div class="topbar-right"><button id="sync" class="sync-button"><span id="sync-dot" class="status-dot"></span><span id="sync-label">기기에 저장됨</span><span aria-hidden="true">↻</span></button><button id="mobile-account" class="avatar mobile-account" aria-label="계정과 내보내기">나</button></div></header>
+      <section class="library" id="library" aria-label="메모 목록">
+        <div class="section-heading"><div><p class="eyebrow" id="greeting">생각을 꺼내 놓는 시간</p><h1 id="view-title">모든 메모<span class="heading-dot">.</span></h1><p id="view-description">잊고 싶지 않은 순간, 떠오르는 생각을 담아 두세요.</p></div><div class="date-badge" id="today"></div></div>
+        <div class="tools"><label class="search"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="메모 속 생각 찾기" aria-label="메모 검색"><kbd>⌘ K</kbd></label><label class="sort"><span class="sr-only">메모 정렬</span><select id="sort"><option value="updated">최근 수정순</option><option value="created">최근 작성순</option><option value="title">제목순</option></select></label></div>
+        <div class="list-caption"><span id="list-count">0개의 메모</span><span id="list-hint">나만의 속도로, 차곡차곡</span></div>
+        <div id="note-grid" class="note-grid"></div>
+        <div id="empty" class="empty-state"><span class="empty-art" aria-hidden="true">✳︎</span><h2 id="empty-title">아직 비어 있는 작은 공간</h2><p id="empty-description">오늘의 첫 생각을 여기에 남겨 볼까요?</p><button id="empty-create" class="text-button">첫 메모 쓰기 <span>↗</span></button></div>
+        <footer class="library-footer"><span>조금씩 쌓이는, 나다운 기록</span><span>MADE ROOM FOR YOUR THOUGHTS</span></footer>
+      </section>
+      <section id="editor" class="editor" hidden aria-label="메모 편집기">
+        <div class="editor-toolbar"><button id="back" class="text-button">← 목록으로</button><div class="editor-actions"><span id="save-state" role="status">기기에 저장됨</span><button id="pin" class="icon-button" aria-label="메모 고정">☆</button><button id="export-note" class="icon-button" aria-label="메모 내보내기">↗</button><button id="trash-note" class="icon-button danger" aria-label="휴지통으로 이동">♧</button></div></div>
+        <div id="trash-banner" class="trash-banner" hidden>휴지통에 있는 메모입니다.<span><button id="restore" class="text-button">복원</button><button id="purge" class="text-button danger">영구 삭제</button></span></div>
+        <div class="writing-sheet"><p class="eyebrow" id="editor-date"></p><input id="note-title" class="note-title" maxlength="300" placeholder="제목 없는 메모" aria-label="메모 제목"><textarea id="note-body" class="note-body" maxlength="200000" placeholder="지금, 어떤 생각이 떠오르나요?" aria-label="메모 본문"></textarea><div class="editor-footer"><span id="char-count">0자</span><span>생각은 가볍게, 기록은 오래.</span></div></div>
+      </section>
+    </main>
+  </div>
+  <dialog id="account-dialog" aria-labelledby="account-heading"><form id="auth-form"><button type="button" id="close-account" class="close-button" aria-label="계정 창 닫기">×</button><span class="dialog-logo">틈</span><p class="eyebrow">YOUR THOUGHTS, EVERYWHERE</p><h2 id="account-heading">어디서든, 이어지는 생각</h2><p class="dialog-description">나만의 메모를 모든 기기에서 만나세요.<br>연결이 끊겨도 작성한 내용은 기기에 남아요.</p><div id="signed-out"><label>이메일<input id="email" type="email" autocomplete="username" placeholder="you@example.com" maxlength="254" required></label><label>비밀번호<input id="password" type="password" autocomplete="current-password" placeholder="10자 이상 입력해 주세요" minlength="10" maxlength="256" required></label><button id="auth-submit" class="primary" type="submit">로그인</button><button id="toggle-auth" class="text-button" type="button">처음 오셨나요? 계정 만들기</button></div><div id="signed-in" hidden><p id="signed-in-email"></p><p id="pending-description"></p><button type="button" id="export-all" class="secondary">전체 메모 내보내기</button><button type="button" id="logout" class="text-button danger">로그아웃</button></div><details class="server-settings"><summary>내 서버 연결</summary><label>서버 주소<input id="server-url" type="url" placeholder="https://memo.example.com" autocomplete="url"></label><p>직접 운영하는 서버가 있다면 주소를 입력하세요. 주소를 바꾸면 해당 서버 계정으로 로그인합니다.</p></details><p id="auth-error" class="form-error" role="alert"></p></form></dialog>
+  <dialog id="confirm-dialog" aria-labelledby="confirm-heading"><form method="dialog"><h2 id="confirm-heading"></h2><p id="confirm-description"></p><div class="dialog-actions"><button value="cancel" class="secondary">취소</button><button id="confirm-ok" value="ok" class="primary">확인</button></div></form></dialog>
+  <div id="toast" class="toast" role="status" hidden></div>
+</body>
+</html>

@@ -1,0 +1,9 @@
+.gradle/
+build/
+**/build/
+server/data/
+__pycache__/
+*.pyc
+.DS_Store
+ios/DerivedData/
+local.properties
