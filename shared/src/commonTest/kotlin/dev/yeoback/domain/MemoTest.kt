@@ -22,6 +22,17 @@ class MemoTest {
         val repo = MemoRepository(storage, { time }, { "id-${++sequence}" })
     }
 
+    @Test fun acceptanceUniqueMemoSurvivesRepositoryRestart() {
+        val storage = Storage()
+        val token = kotlin.random.Random.nextLong().toString()
+        val title = "acceptance-title-$token"
+        val body = "acceptance-body-$token\nrestored exactly"
+        MemoRepository(storage, { 1L }, { token }).save(null, title, body)
+        val restored = MemoRepository(storage, { 2L }, { "unused" }).memos.single()
+        assertEquals(title, restored.title)
+        assertEquals(body, restored.body)
+    }
+
     @Test fun unicodeAndDelimitersSurviveRestartAndEdit() {
         val f = Fixture()
         val title = "  여백 📝:0\n "

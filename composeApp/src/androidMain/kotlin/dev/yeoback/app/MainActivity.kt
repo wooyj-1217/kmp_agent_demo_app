@@ -1,20 +1,34 @@
 package dev.yeoback.app
 
 import android.content.Context
+import android.content.pm.ApplicationInfo
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.Box
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.semantics.testTagsAsResourceId
 import dev.yeoback.domain.MemoStorage
 import java.io.File
 import java.io.FileOutputStream
 
+@OptIn(androidx.compose.ui.ExperimentalComposeUiApi::class)
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        val storage = AndroidMemoStorage(this)
-        setContent { YeobackApp { createRepository(storage) } }
+        val testFile = intent.getStringExtra("test-storage-file")?.takeIf {
+            (applicationInfo.flags and ApplicationInfo.FLAG_DEBUGGABLE) != 0 &&
+                it.matches(Regex("acceptance-[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\\.txt"))
+        }
+        val storage = AndroidMemoStorage(this, testFile ?: "yeoback-memos-v1.txt")
+        setContent {
+            Box(Modifier.semantics { testTagsAsResourceId = true }) {
+                YeobackApp { createRepository(storage) }
+            }
+        }
     }
 }
 

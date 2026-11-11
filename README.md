@@ -29,6 +29,8 @@ iOS는 `iosApp/Moa.xcodeproj`의 `Moa` 스킴을 실행합니다. 프로젝트/�
 
 ## 새 기준과 구조
 
+- 개발 운영: [커밋 규칙·훅 설치](docs/commit-policy.md) · [산출물·과거 기록 관리](docs/artifact-policy.md) · [작업 기록](docs/work-items/README.md)
+
 - [새 기획](docs/fresh-memo/requirements.md) · [디자인](docs/fresh-memo/design.md) · [QA 후 선택](docs/fresh-memo/selection.md) · [개발 계획](docs/fresh-memo/development-plan.md)
 - `shared/src`: 순수 모델·저장 계약·검색/정렬·트랜잭션·코덱·공통 테스트
 - `composeApp/src`: 공유 UI와 각 플랫폼 로컬 저장/탐색·진입, Android 계측 테스트

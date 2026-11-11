@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "plan_version": "MEMO-WEB-REGRESSION-20261104",
+  "checks": [
+    {
+      "id": "memo-web-regression",
+      "criterion_id": "MEMO-SAVE-RESTORE",
+      "platform": "web",
+      "kind": "ui",
+      "required": true,
+      "command": [
+        "rtk",
+        "proxy",
+        "python3",
+        "tools/web-regression-acceptance.py"
+      ],
+      "expected": "Unique title and body survive real Wasm UI reload in new browser context",
+      "expected_tests": [
+        "uniqueMemoSurvivesBrowserRefresh"
+      ],
+      "protected_paths": [
+        "tools/web-regression-acceptance.py",
+        "tools/web-memo-acceptance.cjs",
+        "tools/package.json",
+        "tools/package-lock.json"
+      ],
+      "results": [
+        {
+          "path": "verification/memo-evidence/web-result.json",
+          "format": "playwright"
+        }
+      ]
+    }
+  ]
+}

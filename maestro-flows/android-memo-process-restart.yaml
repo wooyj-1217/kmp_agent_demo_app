@@ -1,0 +1,65 @@
+appId: ${APP_ID}
+name: MEMO-SAVE-RESTORE Maestro android
+---
+- launchApp:
+    clearState: false
+- extendedWaitUntil:
+    visible:
+      id: new-memo
+    timeout: 30000
+- tapOn:
+    id: new-memo
+- tapOn:
+    id: memo-title
+- inputText: ${TITLE}
+- hideKeyboard
+- tapOn:
+    id: memo-body
+- inputText: ${BODY}
+- hideKeyboard
+- assertVisible:
+    id: memo-title
+    text: "^${TITLE}$"
+- assertVisible:
+    id: memo-body
+    text: "^${BODY}$"
+- tapOn:
+    id: save-memo
+- extendedWaitUntil:
+    visible:
+      id: "memo-[0-9a-fA-F-]{36}"
+      containsChild:
+        text: "^${TITLE}$"
+    timeout: 30000
+- takeScreenshot: saved-before-process-stop
+- stopApp
+- takeScreenshot: process-stopped
+- launchApp:
+    clearState: false
+- extendedWaitUntil:
+    visible:
+      id: new-memo
+    timeout: 30000
+- takeScreenshot: relaunched-list
+- tapOn:
+    id: memo-search
+- inputText: ${TITLE}
+- hideKeyboard
+- extendedWaitUntil:
+    visible:
+      id: "memo-[0-9a-fA-F-]{36}"
+      containsChild:
+        text: "^${TITLE}$"
+    timeout: 15000
+- tapOn:
+    id: "memo-[0-9a-fA-F-]{36}"
+    containsChild:
+      text: "^${TITLE}$"
+- hideKeyboard
+- assertVisible:
+    id: memo-title
+    text: "^${TITLE}$"
+- assertVisible:
+    id: memo-body
+    text: "^${BODY}$"
+- takeScreenshot: restored-detail-exact

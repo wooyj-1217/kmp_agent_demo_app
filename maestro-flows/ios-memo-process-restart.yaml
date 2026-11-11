@@ -1,0 +1,53 @@
+appId: ${APP_ID}
+name: MEMO-SAVE-RESTORE Maestro ios
+---
+- launchApp:
+    clearState: false
+- extendedWaitUntil:
+    visible:
+      id: new-memo
+    timeout: 30000
+- tapOn:
+    id: new-memo
+- tapOn:
+    id: memo-title
+- inputText: ${TITLE}
+- tapOn:
+    id: memo-body
+- inputText: ${BODY}
+- tapOn:
+    id: save-memo
+- extendedWaitUntil:
+    visible:
+      id: "memo-[0-9a-fA-F-]{36}"
+      text: "(?s).*${TITLE}.*"
+    timeout: 30000
+- takeScreenshot: saved-before-process-stop
+- stopApp
+- takeScreenshot: process-stopped
+- launchApp:
+    clearState: false
+- extendedWaitUntil:
+    visible:
+      id: new-memo
+    timeout: 30000
+- takeScreenshot: relaunched-list
+- tapOn:
+    id: memo-search
+- inputText: ${TITLE}
+- pressKey: Enter
+- extendedWaitUntil:
+    visible:
+      id: "memo-[0-9a-fA-F-]{36}"
+      text: "(?s).*${TITLE}.*"
+    timeout: 15000
+- tapOn:
+    id: "memo-[0-9a-fA-F-]{36}"
+    text: "(?s).*${TITLE}.*"
+- assertVisible:
+    id: memo-title
+    text: "^메모 제목: ${TITLE}$"
+- assertVisible:
+    id: memo-body
+    text: "^메모 내용: ${BODY}$"
+- takeScreenshot: restored-detail-exact

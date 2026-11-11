@@ -492,12 +492,12 @@ private fun Editor(modifier: Modifier, draft: Draft, memo: Memo?, dirty: Boolean
             Text(if (trashed) "다시 꺼내 쓸 수 있어요" else "나만의 작은 기록", color = Muted, fontSize = 11.sp)
             Spacer(Modifier.height(24.dp))
             BasicTextField(draft.title, onValueChange = onTitleChange,
-                modifier = Modifier.fillMaxWidth().focusRequester(titleFocus).onFocusChanged { onFieldFocus("title", it.isFocused) }.testTag("memo-title").semantics { contentDescription = "메모 제목" },
+                modifier = Modifier.fillMaxWidth().focusRequester(titleFocus).onFocusChanged { onFieldFocus("title", it.isFocused) }.testTag("memo-title").semantics { contentDescription = "메모 제목: ${draft.title}" },
                 readOnly = trashed, singleLine = true, keyboardOptions = KeyboardOptions(imeAction = ImeAction.Next), textStyle = MaterialTheme.typography.headlineSmall.copy(color = Ink, fontSize = 26.sp), cursorBrush = SolidColor(Forest),
                 decorationBox = { inner -> Box { if (draft.title.isEmpty()) Text("제목 없이도 괜찮아요", fontSize = 23.sp, color = Muted.copy(alpha = .65f), fontWeight = FontWeight.Bold); inner() } })
             Spacer(Modifier.height(36.dp))
             BasicTextField(draft.body, onValueChange = onBodyChange,
-                modifier = Modifier.fillMaxWidth().heightIn(min = 240.dp).focusRequester(bodyFocus).onFocusChanged { onFieldFocus("body", it.isFocused) }.testTag("memo-body").semantics { contentDescription = "메모 내용" },
+                modifier = Modifier.fillMaxWidth().heightIn(min = 240.dp).focusRequester(bodyFocus).onFocusChanged { onFieldFocus("body", it.isFocused) }.testTag("memo-body").semantics { contentDescription = "메모 내용: ${draft.body}" },
                 readOnly = trashed, textStyle = MaterialTheme.typography.bodyLarge.copy(color = Ink, fontSize = 16.sp, lineHeight = 30.sp), cursorBrush = SolidColor(Forest),
                 decorationBox = { inner -> Box { if (draft.body.isEmpty()) Text("지금 떠오른 생각을 적어보세요.", color = Muted.copy(alpha = .7f), style = MaterialTheme.typography.bodyLarge); inner() } })
             if (blank && !trashed) Text("제목이나 내용을 입력하면 저장할 수 있어요.", fontSize = 11.sp, color = Muted)

@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "plan_version": "MEMO-MAESTRO-20261104",
+  "checks": [
+    {
+      "id": "memo-android-maestro",
+      "criterion_id": "MEMO-SAVE-RESTORE",
+      "platform": "android",
+      "kind": "ui",
+      "required": true,
+      "command": [
+        "rtk",
+        "proxy",
+        "python3",
+        "tools/mobile-maestro-acceptance.py",
+        "android"
+      ],
+      "expected": "Maestro inputs unique title/body, stops the app process without clearing data, relaunches and verifies each exact value on the editor",
+      "expected_tests": [
+        "MEMO-SAVE-RESTORE Maestro android"
+      ],
+      "protected_paths": [
+        "maestro-flows/android-memo-process-restart.yaml",
+        "tools/mobile-maestro-acceptance.py",
+        "tools/memo-maestro-verification.json"
+      ],
+      "validation_inputs": [
+        "composeApp/src/commonMain/kotlin/dev/yeoback/app/App.kt"
+      ],
+      "results": [
+        {
+          "path": "verification/maestro-memo/android-result.xml",
+          "format": "junit"
+        }
+      ]
+    },
+    {
+      "id": "memo-ios-maestro",
+      "criterion_id": "MEMO-SAVE-RESTORE",
+      "platform": "ios",
+      "kind": "ui",
+      "required": true,
+      "command": [
+        "rtk",
+        "proxy",
+        "python3",
+        "tools/mobile-maestro-acceptance.py",
+        "ios"
+      ],
+      "expected": "Maestro inputs unique title/body, stops the app process without clearing data, relaunches and verifies each exact value on the editor",
+      "expected_tests": [
+        "MEMO-SAVE-RESTORE Maestro ios"
+      ],
+      "protected_paths": [
+        "maestro-flows/ios-memo-process-restart.yaml",
+        "tools/mobile-maestro-acceptance.py",
+        "tools/memo-maestro-verification.json"
+      ],
+      "validation_inputs": [
+        "composeApp/src/commonMain/kotlin/dev/yeoback/app/App.kt"
+      ],
+      "results": [
+        {
+          "path": "verification/maestro-memo/ios-result.xml",
+          "format": "junit"
+        }
+      ]
+    }
+  ]
+}

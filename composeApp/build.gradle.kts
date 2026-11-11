@@ -45,7 +45,7 @@ compose.resources { packageOfResClass = "dev.yeoback.resources" }
 android {
     namespace = "dev.yeoback.app"
     compileSdk = 35
-    defaultConfig { applicationId = "dev.yeoback.app"; minSdk = 24; targetSdk = 35; versionCode = 1; versionName = "1.0"; testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner" }
+    defaultConfig { applicationId = providers.gradleProperty("memoAcceptanceAppId").getOrElse("dev.yeoback.app"); minSdk = 24; targetSdk = 35; versionCode = 1; versionName = "1.0"; testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner" }
     compileOptions { sourceCompatibility = JavaVersion.VERSION_17; targetCompatibility = JavaVersion.VERSION_17 }
 }
 dependencies { debugImplementation("androidx.compose.ui:ui-test-manifest:1.9.0") }

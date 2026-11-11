@@ -1,0 +1,120 @@
+{
+  "schema_version": 1,
+  "scenarios": [
+    {
+      "id": "memo.save_restore.android.maestro",
+      "criterion_id": "MEMO-SAVE-RESTORE",
+      "platform": "android",
+      "tool": "Maestro",
+      "scope": "product_local_storage",
+      "definition": "tools/memo-maestro-verification.json",
+      "check_id": "memo-android-maestro",
+      "suites": [
+        "smoke",
+        "full"
+      ],
+      "required": true,
+      "owner": "demo-maintainer"
+    },
+    {
+      "id": "memo.save_restore.ios.maestro",
+      "criterion_id": "MEMO-SAVE-RESTORE",
+      "platform": "ios",
+      "tool": "Maestro",
+      "scope": "product_local_storage",
+      "definition": "tools/memo-maestro-verification.json",
+      "check_id": "memo-ios-maestro",
+      "suites": [
+        "smoke",
+        "full"
+      ],
+      "required": true,
+      "owner": "demo-maintainer"
+    },
+    {
+      "id": "memo.save_restore.web.playwright",
+      "criterion_id": "MEMO-SAVE-RESTORE",
+      "platform": "web",
+      "tool": "Playwright",
+      "scope": "product_local_storage",
+      "definition": "tools/memo-web-regression-verification.json",
+      "check_id": "memo-web-regression",
+      "suites": [
+        "smoke",
+        "full"
+      ],
+      "required": true,
+      "owner": "demo-maintainer"
+    },
+    {
+      "id": "memo.legacy.memo-common",
+      "criterion_id": "MEMO-SAVE-RESTORE",
+      "platform": "common",
+      "tool": "JUnit JVM",
+      "scope": "product_local_storage",
+      "definition": "tools/memo-verification.json",
+      "check_id": "memo-common",
+      "suites": [
+        "full"
+      ],
+      "required": true,
+      "owner": "demo-maintainer"
+    },
+    {
+      "id": "memo.legacy.memo-android",
+      "criterion_id": "MEMO-SAVE-RESTORE",
+      "platform": "android",
+      "tool": "Android instrumentation",
+      "scope": "product_local_storage",
+      "definition": "tools/memo-verification.json",
+      "check_id": "memo-android",
+      "suites": [
+        "full"
+      ],
+      "required": true,
+      "owner": "demo-maintainer"
+    },
+    {
+      "id": "memo.legacy.memo-ios",
+      "criterion_id": "MEMO-SAVE-RESTORE",
+      "platform": "ios",
+      "tool": "XCTest",
+      "scope": "product_local_storage",
+      "definition": "tools/memo-verification.json",
+      "check_id": "memo-ios",
+      "suites": [
+        "full"
+      ],
+      "required": true,
+      "owner": "demo-maintainer"
+    },
+    {
+      "id": "memo.legacy.memo-android-lint",
+      "criterion_id": "MEMO-LINT",
+      "platform": "android",
+      "tool": "Android lint",
+      "scope": "product_local_storage",
+      "definition": "tools/memo-verification.json",
+      "check_id": "memo-android-lint",
+      "suites": [
+        "full"
+      ],
+      "required": true,
+      "owner": "demo-maintainer"
+    },
+    {
+      "id": "memo.legacy.memo-web-build",
+      "criterion_id": "MEMO-BUILD",
+      "platform": "web",
+      "tool": "Gradle Wasm",
+      "scope": "product_local_storage",
+      "definition": "tools/memo-verification.json",
+      "check_id": "memo-web-build",
+      "suites": [
+        "full"
+      ],
+      "required": true,
+      "owner": "demo-maintainer"
+    }
+  ]
+}

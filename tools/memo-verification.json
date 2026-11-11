@@ -1,0 +1,159 @@
+{
+  "schema_version": 1,
+  "plan_version": "MEMO-SAVE-RESTORE-20261104",
+  "checks": [
+    {
+      "id": "memo-common",
+      "criterion_id": "MEMO-SAVE-RESTORE",
+      "platform": "common",
+      "kind": "test",
+      "required": true,
+      "command": [
+        "rtk",
+        "proxy",
+        "./gradlew",
+        ":shared:cleanJvmTest",
+        ":shared:jvmTest",
+        "--tests",
+        "dev.yeoback.domain.MemoTest.acceptanceUniqueMemoSurvivesRepositoryRestart",
+        "--console=plain"
+      ],
+      "expected": "A newly unique title and body are exactly restored from isolated storage by a new repository",
+      "expected_tests": [
+        "acceptanceUniqueMemoSurvivesRepositoryRestart[jvm]"
+      ],
+      "protected_paths": [
+        "shared/src/commonTest/kotlin/dev/yeoback/domain/MemoTest.kt",
+        "shared/build.gradle.kts"
+      ],
+      "results": [
+        {
+          "path": "shared/build/test-results/jvmTest/TEST-dev.yeoback.domain.MemoTest.xml",
+          "format": "junit"
+        }
+      ]
+    },
+    {
+      "id": "memo-android",
+      "criterion_id": "MEMO-SAVE-RESTORE",
+      "platform": "android",
+      "kind": "ui",
+      "required": true,
+      "command": [
+        "rtk",
+        "proxy",
+        "python3",
+        "tools/android-memo-acceptance.py"
+      ],
+      "expected": "Unique title and body persist through closing and relaunching real Activity using isolated file",
+      "expected_tests": [
+        "uniqueMemoSurvivesActivityRelaunch"
+      ],
+      "protected_paths": [
+        "composeApp/src/androidInstrumentedTest/kotlin/dev/yeoback/app/MemoRestartTest.kt",
+        "composeApp/build.gradle.kts",
+        "tools/android-memo-acceptance.py"
+      ],
+      "results": [
+        {
+          "path": "verification/memo-evidence/android-result.xml",
+          "format": "junit"
+        }
+      ]
+    },
+    {
+      "id": "memo-web",
+      "criterion_id": "MEMO-SAVE-RESTORE",
+      "platform": "web",
+      "kind": "ui",
+      "required": true,
+      "command": [
+        "rtk",
+        "proxy",
+        "node",
+        "tools/web-memo-acceptance.cjs"
+      ],
+      "expected": "Unique title and body survive real Wasm UI reload in new browser context",
+      "expected_tests": [
+        "uniqueMemoSurvivesBrowserRefresh"
+      ],
+      "protected_paths": [
+        "tools/web-memo-acceptance.cjs"
+      ],
+      "results": [
+        {
+          "path": "verification/memo-evidence/web-result.json",
+          "format": "playwright"
+        }
+      ]
+    },
+    {
+      "id": "memo-ios",
+      "criterion_id": "MEMO-SAVE-RESTORE",
+      "platform": "ios",
+      "kind": "ui",
+      "required": true,
+      "command": [
+        "rtk",
+        "proxy",
+        "python3",
+        "tools/ios-memo-acceptance.py"
+      ],
+      "expected": "Unique title and body remain visible after actual iOS app terminate and launch on simulator",
+      "expected_tests": [
+        "testCreateDiscardAndPersistAcrossLaunch()"
+      ],
+      "protected_paths": [
+        "iosApp/MoaUITests.swift",
+        "iosApp/Moa.xcodeproj/project.pbxproj",
+        "tools/ios-memo-acceptance.py"
+      ],
+      "results": [
+        {
+          "path": "verification/memo-evidence/ios-result.xml",
+          "format": "junit"
+        }
+      ]
+    },
+    {
+      "id": "memo-android-lint",
+      "criterion_id": "MEMO-LINT",
+      "platform": "android",
+      "kind": "lint",
+      "required": true,
+      "command": [
+        "rtk",
+        "proxy",
+        "./gradlew",
+        ":composeApp:lintDebug",
+        ":shared:lintDebug",
+        "--console=plain"
+      ],
+      "expected": "Existing Android lint has no errors",
+      "expected_tests": [],
+      "results": []
+    },
+    {
+      "id": "memo-web-build",
+      "criterion_id": "MEMO-BUILD",
+      "platform": "web",
+      "kind": "build",
+      "required": true,
+      "command": [
+        "rtk",
+        "proxy",
+        "./gradlew",
+        ":composeApp:packageOfflineWeb",
+        "--console=plain"
+      ],
+      "expected": "Wasm offline distribution builds successfully; this does not satisfy UI persistence",
+      "expected_tests": [],
+      "results": []
+    }
+  ],
+  "platform_notes": {
+    "server": "NOT_APPLICABLE: no Ktor module or HTTP storage path; server sync remains unresolved product scope",
+    "screenshots": "NOT_SUPPORTED: no Roborazzi configuration or approved baselines",
+    "kotlin_js": "NOT_APPLICABLE: project declares wasmJs only"
+  }
+}
